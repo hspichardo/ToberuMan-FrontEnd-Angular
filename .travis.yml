@@ -17,7 +17,7 @@ script:
 deploy:
   provider: heroku
   api_key:
-    secure: 11bd6cab-4ef6-4dfe-b5f6-422ff91c58a9
+    secure: $HEROKU
   on:
     branch: master
   app: toberuman
