@@ -14,3 +14,10 @@ notifications:
 script:
   - ng test --watch=false --no-progress --browsers=ChromeHeadlessNoSandbox
   - ng e2e --protractor-config=e2e/protractor-travis.conf.js
+deploy:
+  provider: heroku
+  api_key:
+    secure: $HEROKU
+  on:
+    branch: master
+  app: toberuman
