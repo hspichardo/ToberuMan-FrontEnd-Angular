@@ -20,4 +20,3 @@ deploy:
     secure: $HEROKU
   on:
     branch: master
-  app: toberuman
