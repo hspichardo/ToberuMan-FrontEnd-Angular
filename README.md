@@ -1,3 +1,7 @@
+## Estado del Código
+
+[![Build Status](https://travis-ci.org/hspichardo/ToberuMan-FrontEnd-Angular.svg?branch=develop)](https://travis-ci.org/hspichardo/ToberuMan-FrontEnd-Angular)
+
 # ToberuMan
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 9.1.4.
