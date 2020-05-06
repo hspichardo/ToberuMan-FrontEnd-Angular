@@ -2,12 +2,12 @@
   "name": "toberuman",
   "version": "1.0.0-SNAPSHOT",
   "scripts": {
-    "ng": "ng",
-    "start": "ng serve",
-    "build": "ng build",
-    "test": "ng test",
-    "lint": "ng lint",
-    "e2e": "ng e2e"
+    "postinstall": "ng build --prod",
+    "start": "node server.js"
+  },
+  "engines": {
+    "node": "~14.1.0",
+    "npm": "~6.14.4"
   },
   "private": true,
   "dependencies": {
@@ -21,6 +21,7 @@
     "@angular/platform-browser": "~9.1.4",
     "@angular/platform-browser-dynamic": "~9.1.4",
     "@angular/router": "~9.1.4",
+    "express": "^4.17.1",
     "rxjs": "~6.5.4",
     "tslib": "^1.10.0",
     "zone.js": "~0.10.2"
