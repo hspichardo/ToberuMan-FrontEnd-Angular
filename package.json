@@ -3,7 +3,8 @@
   "version": "1.0.0-SNAPSHOT",
   "scripts": {
     "postinstall": "ng build --prod",
-    "start": "node server.js"
+    "start": "node server.js",
+    "build:lib": "ng build toberuman"
   },
   "engines": {
     "node": "~14.1.0",
@@ -24,6 +25,7 @@
     "bootstrap": "^4.4.1",
     "express": "^4.17.1",
     "jquery": "^3.5.1",
+    "ng-sidebar": "^9.2.1",
     "popper.js": "^1.16.1",
     "rxjs": "~6.5.4",
     "tslib": "^1.10.0",
