@@ -1,17 +1,6 @@
-<!-- <mat-toolbar class="naranja">
-  <img src="../../assets/img/logo.png" width="50 px" style="margin-right: 10pt">
-  <span>ToberuMan</span>
-  <button mat-button>
-    <mat-icon>person_outline</mat-icon>
-    <span>Login</span>
-  </button>
-</mat-toolbar>
-<h2>Bienvenidos a Toberuman</h2>
-<p>Por favor Inicie sesion para poder utlizar la app</p>
--->
 <div class="container-login100">
   <div class="wrap-login100 p-l-55 p-r-55 p-t-80 p-b-30">
-    <form class="login100-form validate-form">
+    <div class="login100-form validate-form">
       <p class="text-center">
       <img class="img-circle" width="150" src="../../assets/img/logo.png">
       </p>
@@ -23,12 +12,10 @@
         <input class="input100" type="password" name="password" id="password" placeholder="password">
         <span class="focus-input100"></span>
       </div>
-      <div class="alert alert-danger" role="alert">
-      </div>
       <div class="container-login100-form-btn">
 
-        <button mat-button class="login100-form-btn">Log-In</button>
+        <a mat-button routerLink="/home" class="login100-form-btn">Log-In</a>
       </div>
-    </form>
+    </div>
   </div>
 </div>
