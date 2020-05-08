@@ -30,8 +30,8 @@ export class HttpService {
     this.resetOptions();
   }
 
-  login(mobile: number, password: string, endPoint: string): Observable<any> {
-    return this.authBasic(mobile, password).post(endPoint).pipe(
+  login(username: string, password: string, endPoint: string): Observable<any> {
+    return this.authBasic(username, password).post(endPoint).pipe(
       map(token => {
         this.token = token;
         this.token.username = new JwtHelperService().decodeToken(token.token).user;
@@ -127,8 +127,8 @@ export class HttpService {
     return this;
   }
 
-  private authBasic(mobile: number, password: string): HttpService {
-    return this.header('Authorization', 'Basic ' + btoa(mobile + ':' + password));
+  private authBasic(username: string, password: string): HttpService {
+    return this.header('Authorization', 'Basic ' + btoa(username + ':' + password));
   }
 
   private resetOptions(): void {
