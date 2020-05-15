@@ -9,6 +9,7 @@ import {Token} from './token.model';
 import {Error} from './error.model';
 import {MatSnackBar} from '@angular/material/snack-bar';
 import {JwtHelperService} from '@auth0/angular-jwt';
+import {LoginModel} from './login.model';
 
 @Injectable()
 export class HttpService {
@@ -22,7 +23,7 @@ export class HttpService {
   private params: HttpParams;
   private responseType: string;
   private successfulNotification = undefined;
-
+  private loginData: LoginModel;
   private loginTime: Date;
   private logoutTime: Date;
 
@@ -30,11 +31,15 @@ export class HttpService {
     this.resetOptions();
   }
 
-  login(username: string, password: string, endPoint: string): Observable<any> {
-    return this.authBasic(username, password).post(endPoint).pipe(
+  login(dni: string, password: string, endPoint: string): Observable<any> {
+    this.loginData = {
+      dni: dni,
+      password: password
+    };
+    return this.authBasic(dni, password).post(endPoint, this.loginData).pipe(
       map(token => {
         this.token = token;
-        this.token.username = new JwtHelperService().decodeToken(token.token).user;
+        this.token.id = new JwtHelperService().decodeToken(token.token)._id;
         this.token.name = new JwtHelperService().decodeToken(token.token).name;
         this.token.roles = new JwtHelperService().decodeToken(token.token).roles;
         this.loginTime = new Date();
@@ -47,14 +52,18 @@ export class HttpService {
   logout(): Date {
     this.token = undefined;
     this.router.navigate(['']);
+    console.log(this.loginTime);
     const nowTime = new Date();
-    if (this.loginTime.getDate() === nowTime.getDate()) {
-      // console.log('same days...');
-      return null;
-    } else {
-      // console.log('differernt days...');
-      return this.loginTime;
+    if (this.loginTime !== undefined){
+      if (this.loginTime.getDate() === nowTime.getDate()) {
+        // console.log('same days...');
+        return null;
+      } else {
+        // console.log('differernt days...');
+        return this.loginTime;
+      }
     }
+    else { return null; }
   }
 
   getToken(): Token {
@@ -173,6 +182,7 @@ export class HttpService {
 
   private handleError(response): any {
     let error: Error;
+    console.log(response);
     if (response.status === HttpService.UNAUTHORIZED) {
       this.snackBar.open('Unauthorized', 'Error', {duration: 5000});
       this.logout();
@@ -182,17 +192,18 @@ export class HttpService {
       this.snackBar.open('Connection Refuse', 'Error', {duration: 5000});
       return EMPTY;
     } else if (response.status === HttpService.NOT_FOUND) {
-      error = {error: 'Not Found', message: '', path: ''};
+      console.log(response.error.message);
+      error = {error: 'Not Found', message: response.error.message, path: ''};
       this.snackBar.open(error.error + ': ' + error.message, 'Info', {duration: 2000});
-      return throwError(error);
+      return EMPTY;
     } else {
       try {
-        error = response.error; // with 'text': JSON.parse(response.error);
+        error = {error: response.error, message: response.error.message, path: ''}; // with 'text': JSON.parse(response.error);
         this.snackBar.open(error.error + ' (' + response.status + '): ' + error.message, 'Error', {duration: 10000});
         return throwError(error);
       } catch (e) {
         this.snackBar.open('Not response', 'Error', {duration: 10000});
-        return throwError(response.error);
+        return throwError(e);
       }
     }
   }
