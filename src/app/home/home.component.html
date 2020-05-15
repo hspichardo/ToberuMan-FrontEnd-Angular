@@ -33,7 +33,7 @@
             Ordenes
           </a>
         </li>
-        <li class="nav-item">
+        <li *ngIf="isManager || isAdmin" class="nav-item">
           <a routerLink="/home" class="nav-link">
             <span class="material-icons">fastfood</span>
             Administrar Menú
@@ -53,7 +53,7 @@
 
         <span class="font-weight-bolder">ToberuMan</span>
         <button routerLink="/" mat-button>
-          <span>Username</span>
+          <span>{{username}}</span>
           <mat-icon>account_circle</mat-icon>
           <span>Logout</span>
         </button>
