@@ -16,12 +16,20 @@ import {HttpService} from './shared/http.service';
 import {FormsModule} from '@angular/forms';
 import {HttpClient, HttpClientModule} from '@angular/common/http';
 import {MatSnackBar} from '@angular/material/snack-bar';
+import {CrudComponent} from './shared/crud.component';
+import {MatCardModule} from '@angular/material/card';
+import {MatTableModule} from '@angular/material/table';
+import {AppMaterialModule} from './app-material.module';
+import { MenuComponent } from './home/menu/menu.component';
+
 
 @NgModule({
   declarations: [
     AppComponent,
     WelcomeComponent,
-    HomeComponent
+    HomeComponent,
+    CrudComponent,
+    MenuComponent
   ],
   imports: [
     BrowserModule,
@@ -33,7 +41,10 @@ import {MatSnackBar} from '@angular/material/snack-bar';
     SidebarModule.forRoot(),
     MatMenuModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    MatCardModule,
+    MatTableModule,
+    AppMaterialModule
   ],
   providers: [
     TokensService,
