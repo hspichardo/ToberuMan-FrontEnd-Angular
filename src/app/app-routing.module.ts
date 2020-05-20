@@ -2,6 +2,7 @@ import {NgModule} from '@angular/core';
 import {Routes, RouterModule} from '@angular/router';
 import {WelcomeComponent} from './welcome/welcome.component';
 import {HomeComponent} from './home/home.component';
+import {MenuComponent} from './home/menu/menu.component';
 
 
 const routes: Routes = [
@@ -9,7 +10,9 @@ const routes: Routes = [
   {path: 'welcome', component: WelcomeComponent},
   {
     path: 'home', component: HomeComponent,
-    children: []
+    children: [
+      {path: 'menu', component: MenuComponent}
+    ]
   }
 ];
 
