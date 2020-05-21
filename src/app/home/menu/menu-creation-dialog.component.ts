@@ -2,6 +2,7 @@ import {Component, Inject} from '@angular/core';
 import {MAT_DIALOG_DATA, MatDialog, MatDialogRef} from '@angular/material/dialog';
 import {MatSnackBar} from '@angular/material/snack-bar';
 import {MenuModel} from '../../shared/menu.model';
+import {MenuService} from '../../shared/menu.service';
 
 
 @Component({
@@ -22,7 +23,7 @@ export class MenuCreationDialogComponent {
 
   constructor(@Inject(MAT_DIALOG_DATA) data: any, private dialog: MatDialog,
               private dialogRef: MatDialogRef<MenuCreationDialogComponent>,
-              private message: MatSnackBar) {
+              private message: MatSnackBar, private menuService: MenuService) {
     this.editMode = data.isEdit;
     if (data.isEdit) {
       /*this.menuService.readOne(data.code).subscribe(
@@ -32,7 +33,6 @@ export class MenuCreationDialogComponent {
   }
 
   createMenu() {
-    /*
     this.menuService.create(this.newMenu).subscribe(
       () => {
         this.dialog.closeAll();
@@ -43,7 +43,7 @@ export class MenuCreationDialogComponent {
       , () => this.message.open('Menu created successfully', null, {
         duration: 2000,
       })
-    );*/
+    );
   }
 
   updateMenu() {
