@@ -1,0 +1,44 @@
+<h3 mat-dialog-title>Menu</h3>
+<mat-dialog-content>
+
+  <mat-form-field class="full-width">
+    <input [(ngModel)]="newMenu.name" cdkFocusInitial matInput
+           placeholder="Nombre"
+           required type="String"/>
+  </mat-form-field>
+  <br>
+  <mat-form-field class="full-width">
+    <input [(ngModel)]="newMenu.description" cdkFocusInitial matInput
+           placeholder="Descripción"
+           required type="String"/>
+  </mat-form-field>
+  <br>
+  <mat-form-field class="full-width">
+    <input [(ngModel)]="newMenu.price" matInput
+           placeholder="Precio"
+           required type="number"/>
+  </mat-form-field>
+  <br>
+  <mat-form-field class="full-width">
+    <mat-label>TIPO</mat-label>
+    <mat-select [(value)]="newMenu.menuType" required type="number">
+      <mat-option value="FOOD">FOOD</mat-option>
+      <mat-option value="DRINK">DRINK</mat-option>
+      <mat-option value="COMBO">COMBO</mat-option>
+    </mat-select>
+  </mat-form-field>
+  <br>
+  <mat-slide-toggle *ngIf="editMode" [(ngModel)]="newMenu.isAviable">Disponible</mat-slide-toggle>
+
+</mat-dialog-content>
+<mat-dialog-actions>
+  <button mat-dialog-close mat-raised-button>Close</button>
+  <button (click)="createMenu()" *ngIf="editMode == false && isvalid()" color="primary" mat-raised-button>
+    <mat-icon>local_offer</mat-icon>
+    <span>Create Menu</span>
+  </button>
+  <button (click)="updateMenu()" *ngIf="editMode && isvalid()" color="primary" mat-raised-button>
+    <mat-icon>local_offer</mat-icon>
+    <span>Save Changes</span>
+  </button>
+</mat-dialog-actions>
