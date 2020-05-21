@@ -21,6 +21,7 @@ import {MatTableModule} from '@angular/material/table';
 import {AppMaterialModule} from './app-material.module';
 import { MenuComponent } from './home/menu/menu.component';
 import {MenuCreationDialogComponent} from './home/menu/menu-creation-dialog.component';
+import {MenuService} from './shared/menu.service';
 
 
 @NgModule({
@@ -50,7 +51,8 @@ import {MenuCreationDialogComponent} from './home/menu/menu-creation-dialog.comp
   providers: [
     TokensService,
     HttpService,
-    MatSnackBar
+    MatSnackBar,
+    MenuService
   ],
   bootstrap: [AppComponent]
 })

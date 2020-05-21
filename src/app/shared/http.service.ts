@@ -148,7 +148,7 @@ export class HttpService {
 
   private createOptions(): any {
     if (this.token !== undefined) {
-      this.header('Authorization', 'Bearer ' + this.token.token);
+      this.header('Authorization', this.token.token);
     }
     const options: any = {
       headers: this.headers,
