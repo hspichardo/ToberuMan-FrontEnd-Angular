@@ -1,7 +1,8 @@
 export class MenuModel {
+  id?: string;
   name: string;
   description: string;
   menuType: string;
   price: number;
-  isAvailable: boolean;
+  isAviable: boolean;
 }

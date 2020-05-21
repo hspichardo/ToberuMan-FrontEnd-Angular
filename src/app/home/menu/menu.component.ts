@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {MenuModel} from '../../shared/menu.model';
+import {MenuCreationDialogComponent} from './menu-creation-dialog.component';
+import {MatDialog} from '@angular/material/dialog';
 
 @Component({
   selector: 'app-menu',
@@ -11,12 +13,27 @@ export class MenuComponent implements OnInit {
   title = 'Administración de Menús';
   columns = ['name', 'description', 'price'];
   data: MenuModel[];
-  constructor() { }
+  isEdit: boolean;
+  constructor(private dialog: MatDialog) { }
 
   ngOnInit(): void {
   }
 
   create() {
+    this.isEdit = false;
+    this.dialog.open(MenuCreationDialogComponent,
+      {
+        width: '500px',
+        data: {
+          isEdit: this.isEdit
+        }
+      }
+    ).afterClosed().subscribe(
+      result => {
+        // this.search();
+      }
+    );
+
 
   }
 

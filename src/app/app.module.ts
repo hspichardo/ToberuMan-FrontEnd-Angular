@@ -1,6 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { WelcomeComponent } from './welcome/welcome.component';
@@ -21,6 +20,7 @@ import {MatCardModule} from '@angular/material/card';
 import {MatTableModule} from '@angular/material/table';
 import {AppMaterialModule} from './app-material.module';
 import { MenuComponent } from './home/menu/menu.component';
+import {MenuCreationDialogComponent} from './home/menu/menu-creation-dialog.component';
 
 
 @NgModule({
@@ -29,7 +29,8 @@ import { MenuComponent } from './home/menu/menu.component';
     WelcomeComponent,
     HomeComponent,
     CrudComponent,
-    MenuComponent
+    MenuComponent,
+    MenuCreationDialogComponent
   ],
   imports: [
     BrowserModule,
