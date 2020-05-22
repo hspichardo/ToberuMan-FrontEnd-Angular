@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import {MenuModel} from '../../shared/menu.model';
 import {MenuCreationDialogComponent} from './menu-creation-dialog.component';
 import {MatDialog} from '@angular/material/dialog';
+import {MenuService} from '../../shared/menu.service';
+import {MenuDetailDialogComponent} from './menu-detail-dialog.component';
 
 @Component({
   selector: 'app-menu',
@@ -11,10 +13,17 @@ import {MatDialog} from '@angular/material/dialog';
 export class MenuComponent implements OnInit {
   menu: MenuModel;
   title = 'Administración de Menús';
-  columns = ['name', 'description', 'price'];
+  columns = ['name', 'description', 'price', 'menuType'];
   data: MenuModel[];
   isEdit: boolean;
-  constructor(private dialog: MatDialog) { }
+  constructor(private dialog: MatDialog, private menuService: MenuService) {
+    this.menuService.readAll().subscribe(
+      data => {
+        this.data = data;
+        console.log(this.data[0].price.$numberDecimal);
+      }
+    );
+  }
 
   ngOnInit(): void {
   }
@@ -30,7 +39,9 @@ export class MenuComponent implements OnInit {
       }
     ).afterClosed().subscribe(
       result => {
-        // this.search();
+        this.menuService.readAll().subscribe(
+          data => this.data = data
+        );
       }
     );
 
@@ -44,7 +55,16 @@ export class MenuComponent implements OnInit {
 
   }
 
-  read($event: any) {
-
+  read(menu: MenuModel) {
+    // TODO
+    console.log(menu);
+    this.dialog.open(MenuDetailDialogComponent,
+      {
+        width: '400px',
+        data: {
+          id: menu._id
+        }
+      }
+    );
   }
 }

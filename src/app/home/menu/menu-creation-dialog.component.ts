@@ -12,7 +12,7 @@ import {MenuService} from '../../shared/menu.service';
 
 export class MenuCreationDialogComponent {
   newMenu: MenuModel = {
-    id: null,
+    _id: null,
     name: null,
     description: null,
     price: null,
@@ -62,6 +62,6 @@ export class MenuCreationDialogComponent {
     );*/
   }
   isvalid(): boolean {
-    return this.newMenu.description != null && this.newMenu.name != null && this.newMenu.price !== 0;
+    return this.newMenu.description != null && this.newMenu.name != null && this.newMenu.price.$numberDecimal !== 0;
   }
 }
