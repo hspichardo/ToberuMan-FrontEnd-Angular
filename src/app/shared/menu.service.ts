@@ -22,4 +22,7 @@ export class MenuService {
   update(id: string, menu: MenuModel): Observable<MenuModel> {
     return this.httpService.put('/menu' + '/' + id, menu);
   }
+  delete(menu: MenuModel): Observable<void> {
+    return this.httpService.delete('/menu' + '/' + menu._id);
+  }
 }

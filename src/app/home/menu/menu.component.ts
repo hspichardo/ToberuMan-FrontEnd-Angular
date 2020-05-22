@@ -4,6 +4,9 @@ import {MenuCreationDialogComponent} from './menu-creation-dialog.component';
 import {MatDialog} from '@angular/material/dialog';
 import {MenuService} from '../../shared/menu.service';
 import {MenuDetailDialogComponent} from './menu-detail-dialog.component';
+import {CancelYesDialogComponent} from '../../shared/cancel-yes-dialog.component';
+import {take} from 'rxjs/operators';
+import {MatSnackBar} from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-menu',
@@ -16,7 +19,7 @@ export class MenuComponent implements OnInit {
   columns = ['name', 'description', 'price', 'menuType'];
   data: MenuModel[];
   isEdit: boolean;
-  constructor(private dialog: MatDialog, private menuService: MenuService) {
+  constructor(private dialog: MatDialog, private menuService: MenuService, private message: MatSnackBar) {
     this.menuService.readAll().subscribe(
       data => {
         this.data = data;
@@ -65,8 +68,21 @@ export class MenuComponent implements OnInit {
       }
     );
   }
-  delete() {
-
+   delete(menu: MenuModel): void {
+    this.dialog.open(CancelYesDialogComponent).afterClosed().pipe(take(1)).subscribe((shouldDelete: boolean) => {
+      if (shouldDelete) {
+        this.menuService.delete(menu).subscribe(() => {
+            this.message.open('Menu updated successfully', null, {
+              duration: 2000,
+            });
+            this.menuService.readAll().subscribe(
+              data => this.data = data
+            );
+          }
+          );
+      }
+    }, (error) => console.log(error), () => {
+    });
   }
 
   read(menu: MenuModel) {

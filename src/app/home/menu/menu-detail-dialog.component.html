@@ -18,7 +18,7 @@
   <mat-label><strong>Type:</strong> {{menu.menuType}} </mat-label>
 
   <br>
-  <mat-chip *ngIf="menu.isAviable" [color]="color" selected>
+  <mat-chip *ngIf="!menu.isAviable" [color]="color" selected>
     NotAviable!
   </mat-chip>
 </mat-dialog-content>
