@@ -1,0 +1,27 @@
+<h3 mat-dialog-title>Menu's Detail</h3>
+<mat-dialog-content>
+
+  <mat-label><strong>Id:</strong> {{menu._id}} </mat-label>
+
+  <br>
+  <mat-label><strong>Name:</strong> {{menu.name}} </mat-label>
+
+  <br>
+  <mat-label><strong>Description:</strong> {{menu.description}} </mat-label>
+
+  <br>
+
+  <mat-label><strong>Price:</strong> {{menu.price}} </mat-label>
+
+  <br>
+
+  <mat-label><strong>Type:</strong> {{menu.menuType}} </mat-label>
+
+  <br>
+  <mat-chip *ngIf="menu.isAviable" [color]="color" selected>
+    NotAviable!
+  </mat-chip>
+</mat-dialog-content>
+<mat-dialog-actions>
+  <button mat-dialog-close mat-raised-button>Close</button>
+</mat-dialog-actions>

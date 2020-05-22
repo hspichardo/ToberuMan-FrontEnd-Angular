@@ -1,8 +1,10 @@
 export class MenuModel {
-  id?: string;
+  _id?: string;
   name: string;
   description: string;
   menuType: string;
-  price: number;
+  price: {
+    $numberDecimal: number
+  };
   isAviable: boolean;
 }

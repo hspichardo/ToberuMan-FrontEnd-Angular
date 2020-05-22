@@ -22,6 +22,8 @@ import {AppMaterialModule} from './app-material.module';
 import { MenuComponent } from './home/menu/menu.component';
 import {MenuCreationDialogComponent} from './home/menu/menu-creation-dialog.component';
 import {MenuService} from './shared/menu.service';
+import {CdkTableModule} from '@angular/cdk/table';
+import {MenuDetailDialogComponent} from './home/menu/menu-detail-dialog.component';
 
 
 @NgModule({
@@ -31,7 +33,8 @@ import {MenuService} from './shared/menu.service';
     HomeComponent,
     CrudComponent,
     MenuComponent,
-    MenuCreationDialogComponent
+    MenuCreationDialogComponent,
+    MenuDetailDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -46,7 +49,8 @@ import {MenuService} from './shared/menu.service';
     HttpClientModule,
     MatCardModule,
     MatTableModule,
-    AppMaterialModule
+    AppMaterialModule,
+    CdkTableModule
   ],
   providers: [
     TokensService,

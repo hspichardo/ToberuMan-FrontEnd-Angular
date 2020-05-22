@@ -11,4 +11,12 @@ export class MenuService {
   create(menu: MenuModel): Observable<MenuModel> {
     return this.httpService.successful().post('/menu', menu);
   }
+  readAll(): Observable<MenuModel[]> {
+    return this.httpService.successful().get('/menu');
+  }
+
+  readOne(id: string): Observable<MenuModel> {
+    return this.httpService.get('/menu' + '/' + id);
+  }
+
 }
