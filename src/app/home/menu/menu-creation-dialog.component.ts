@@ -26,9 +26,9 @@ export class MenuCreationDialogComponent {
               private message: MatSnackBar, private menuService: MenuService) {
     this.editMode = data.isEdit;
     if (data.isEdit) {
-      /*this.menuService.readOne(data.code).subscribe(
-        article => this.newArticle = article
-      );*/
+      this.menuService.readOne(data.id).subscribe(
+        menu => this.newMenu = menu
+      );
     }
   }
 
@@ -47,8 +47,7 @@ export class MenuCreationDialogComponent {
   }
 
   updateMenu() {
-    /*
-    this.menuService.update(this.newMenu.id, this.newMenu).subscribe(
+    this.menuService.update(this.newMenu._id, this.newMenu).subscribe(
       (data) => {
         this.newMenu = data;
         this.dialog.closeAll();
@@ -59,7 +58,7 @@ export class MenuCreationDialogComponent {
       , () => this.message.open('Menu updated successfully', null, {
         duration: 2000,
       })
-    );*/
+    );
   }
   isvalid(): boolean {
     return this.newMenu.description != null && this.newMenu.name != null && this.newMenu.price.$numberDecimal !== 0;
