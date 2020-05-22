@@ -24,6 +24,7 @@ import {MenuCreationDialogComponent} from './home/menu/menu-creation-dialog.comp
 import {MenuService} from './shared/menu.service';
 import {CdkTableModule} from '@angular/cdk/table';
 import {MenuDetailDialogComponent} from './home/menu/menu-detail-dialog.component';
+import {CancelYesDialogComponent} from './shared/cancel-yes-dialog.component';
 
 
 @NgModule({
@@ -34,7 +35,8 @@ import {MenuDetailDialogComponent} from './home/menu/menu-detail-dialog.componen
     CrudComponent,
     MenuComponent,
     MenuCreationDialogComponent,
-    MenuDetailDialogComponent
+    MenuDetailDialogComponent,
+    CancelYesDialogComponent
   ],
   imports: [
     BrowserModule,

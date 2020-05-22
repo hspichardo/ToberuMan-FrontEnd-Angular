@@ -17,7 +17,7 @@ export class MenuDetailDialogComponent {
     menuType: null,
     isAviable: null,
   };
-  color = 'warning';
+  color = 'warn';
 
   constructor(@Inject(MAT_DIALOG_DATA) data: any, private dialog: MatDialog,
               private dialogRef: MatDialogRef<MenuDetailDialogComponent>,
