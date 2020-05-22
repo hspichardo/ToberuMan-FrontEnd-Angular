@@ -19,4 +19,7 @@ export class MenuService {
     return this.httpService.get('/menu' + '/' + id);
   }
 
+  update(id: string, menu: MenuModel): Observable<MenuModel> {
+    return this.httpService.put('/menu' + '/' + id, menu);
+  }
 }

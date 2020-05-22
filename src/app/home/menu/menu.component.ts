@@ -20,7 +20,6 @@ export class MenuComponent implements OnInit {
     this.menuService.readAll().subscribe(
       data => {
         this.data = data;
-        console.log(this.data[0].price.$numberDecimal);
       }
     );
   }
@@ -48,8 +47,23 @@ export class MenuComponent implements OnInit {
 
   }
 
-  update($event: any){
-
+  update(menu: MenuModel){
+    this.isEdit = true;
+    this.dialog.open(MenuCreationDialogComponent,
+      {
+        width: '500px',
+        data: {
+          id: menu._id,
+          isEdit: this.isEdit
+        }
+      }
+    ).afterClosed().subscribe(
+      result => {
+        this.menuService.readAll().subscribe(
+          data => this.data = data
+        );
+      }
+    );
   }
   delete() {
 
