@@ -28,6 +28,12 @@
           <img src="../../assets/img/logo.png" width="80 px" style="margin-right: 10pt">
         </li>
         <li *ngIf="isAdmin || isManager || isWaiter" class="nav-item">
+          <a class="nav-link" routerLink="/home/overview">
+            <span class="material-icons">dashboard</span>
+            Overview
+          </a>
+        </li>
+        <li *ngIf="isAdmin || isManager || isWaiter" class="nav-item">
           <a class="nav-link" routerLink="/home">
             <span class="material-icons">speaker_notes</span>
             Ordenes
