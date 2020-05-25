@@ -25,6 +25,8 @@ import {MenuService} from './shared/menu.service';
 import {CdkTableModule} from '@angular/cdk/table';
 import {MenuDetailDialogComponent} from './home/menu/menu-detail-dialog.component';
 import {CancelYesDialogComponent} from './shared/cancel-yes-dialog.component';
+import {OverviewComponent} from './home/overview/overview.component';
+import {TableService} from './shared/table.service';
 
 
 @NgModule({
@@ -36,7 +38,8 @@ import {CancelYesDialogComponent} from './shared/cancel-yes-dialog.component';
     MenuComponent,
     MenuCreationDialogComponent,
     MenuDetailDialogComponent,
-    CancelYesDialogComponent
+    CancelYesDialogComponent,
+    OverviewComponent
   ],
   imports: [
     BrowserModule,
@@ -58,7 +61,8 @@ import {CancelYesDialogComponent} from './shared/cancel-yes-dialog.component';
     TokensService,
     HttpService,
     MatSnackBar,
-    MenuService
+    MenuService,
+    TableService
   ],
   bootstrap: [AppComponent]
 })

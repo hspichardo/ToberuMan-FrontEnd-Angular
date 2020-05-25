@@ -22,7 +22,7 @@ export class WelcomeComponent implements OnInit {
   login() {
     this.tokensService.login(this.dni, this.password).subscribe(
       () => {
-        this.router.navigate(['home']);
+        this.router.navigate(['home/overview']);
         this.isManagerOrOperator = this.tokensService.isManager() || this.tokensService.isOperator();
       });
   }
