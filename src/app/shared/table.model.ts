@@ -1,5 +1,5 @@
 export class Table {
-  id?: string;
+  _id?: string;
   number: number;
   capacity: number;
   isTaken: boolean;

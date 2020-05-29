@@ -23,6 +23,6 @@ export class TableService {
     return this.httpService.put('/table' + '/' + id, table);
   }
   delete(table: Table): Observable<void> {
-    return this.httpService.delete('/table' + '/' + table.id);
+    return this.httpService.delete('/table' + '/' + table._id);
   }
 }
