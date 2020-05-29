@@ -15,11 +15,13 @@ import {OrderCreationDialogComponent} from '../../shared/order-creation-dialog.c
 
 export class OrderComponent implements OnInit {
   title = 'Orders management';
-  columns = ['id', 'isReady', 'date'];
+  columns = ['_id', 'isReady', 'date'];
   data: OrderModel[];
 
   constructor(private dialog: MatDialog, private orderService: OrderService, private message: MatSnackBar) {
-
+      this.orderService.readAll().subscribe(
+        data => this.data = data
+      );
   }
 
   ngOnInit(): void {
