@@ -4,6 +4,7 @@ import {WelcomeComponent} from './welcome/welcome.component';
 import {HomeComponent} from './home/home.component';
 import {MenuComponent} from './home/menu/menu.component';
 import {OverviewComponent} from './home/overview/overview.component';
+import {OrderComponent} from './home/order/order.component';
 
 
 const routes: Routes = [
@@ -13,7 +14,8 @@ const routes: Routes = [
     path: 'home', component: HomeComponent,
     children: [
       {path: 'menu', component: MenuComponent},
-      {path: 'overview', component: OverviewComponent}
+      {path: 'overview', component: OverviewComponent},
+      {path: 'order', component: OrderComponent}
     ]
   }
 ];

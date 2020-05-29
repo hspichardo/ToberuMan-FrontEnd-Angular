@@ -27,6 +27,9 @@ import {MenuDetailDialogComponent} from './home/menu/menu-detail-dialog.componen
 import {CancelYesDialogComponent} from './shared/cancel-yes-dialog.component';
 import {OverviewComponent} from './home/overview/overview.component';
 import {TableService} from './shared/table.service';
+import {OrderComponent} from './home/order/order.component';
+import {OrderService} from './shared/order.service';
+import {OrderCreationDialogComponent} from './shared/order-creation-dialog.component';
 
 
 @NgModule({
@@ -39,7 +42,9 @@ import {TableService} from './shared/table.service';
     MenuCreationDialogComponent,
     MenuDetailDialogComponent,
     CancelYesDialogComponent,
-    OverviewComponent
+    OverviewComponent,
+    OrderComponent,
+    OrderCreationDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -62,7 +67,8 @@ import {TableService} from './shared/table.service';
     HttpService,
     MatSnackBar,
     MenuService,
-    TableService
+    TableService,
+    OrderService
   ],
   bootstrap: [AppComponent]
 })

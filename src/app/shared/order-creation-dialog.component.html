@@ -1,0 +1,42 @@
+<h3 mat-dialog-title>Create Order</h3>
+<mat-dialog-content>
+  <mat-form-field>
+    <mat-label>Mesa</mat-label>
+    <mat-select [(value)]="order.tableid">
+      <ng-container *ngFor="let table of tables">
+        <mat-option (click)="onSelect(table)" [value]="table">
+          {{table.number}}
+        </mat-option>
+      </ng-container>
+    </mat-select>
+  </mat-form-field>
+  <mat-divider></mat-divider>
+  <h4 mat-dialog-title>Añadir Menu a la Orden</h4>
+  <mat-form-field>
+    <mat-label>Menus</mat-label>
+    <mat-select [(value)]="menuIn">
+      <ng-container *ngFor="let menu of menus">
+        <mat-option (click)="onSelect(menu)" [value]="menu._id">
+          {{menu.name}}
+        </mat-option>
+      </ng-container>
+    </mat-select>
+  </mat-form-field>
+  <mat-form-field>
+    <input [(ngModel)]="orderLine.amount" matInput
+           placeholder="Required amount"
+           required type="number"/>
+  </mat-form-field>
+  <button (click)="addOrderLine()" mat-raised-button>+</button>
+
+  <app-crud (delete)="deleteOrderLine($event)" [columns]="columns" [createAction]="false" [data]="data"
+            [deleteAction]="true" [readAction]="false" [title]="title" [updateAction]="false"></app-crud>
+</mat-dialog-content>
+
+<mat-dialog-actions>
+  <button mat-dialog-close mat-raised-button>Close</button>
+  <button (click)="createOrder()" color="primary" mat-raised-button>
+    <mat-icon>local_offer</mat-icon>
+    <span>Create Order</span>
+  </button>
+</mat-dialog-actions>
