@@ -10,4 +10,7 @@ export class OrderService {
   create(order: OrderModel): Observable<OrderModel> {
     return this.httpService.successful().post('/order', order);
   }
+  readAll(): Observable<OrderModel[]> {
+    return this.httpService.successful().get('/order');
+  }
 }
