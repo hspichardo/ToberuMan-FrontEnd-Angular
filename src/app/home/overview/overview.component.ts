@@ -3,6 +3,9 @@ import {TokensService} from '../../shared/tokens.service';
 import {Router} from '@angular/router';
 import {TableService} from '../../shared/table.service';
 import {Table} from '../../shared/table.model';
+import {MatDialog, MatDialogRef} from '@angular/material/dialog';
+import {MatSnackBar} from '@angular/material/snack-bar';
+import {OrderCreationDialogComponent} from '../../shared/order-creation-dialog.component';
 
 @Component({
   selector: 'app-overview',
@@ -13,7 +16,7 @@ import {Table} from '../../shared/table.model';
 export class OverviewComponent implements OnInit {
   breakpoint: number;
   tables: Table[];
-  constructor(private tableService: TableService, router: Router) {
+  constructor(private tableService: TableService, router: Router, private dialog: MatDialog, private message: MatSnackBar) {
    this.tableService.readAll().subscribe(
      data => {
        this.tables = data;
@@ -26,5 +29,16 @@ export class OverviewComponent implements OnInit {
   }
   onResize(event) {
     this.breakpoint = (event.target.innerWidth <= 400) ? 1 : 4;
+  }
+
+  createOrder(id: string) {
+    this.dialog.open(OrderCreationDialogComponent, {
+      width: '70%',
+      data: {
+        tableid: id,
+        isOverview: true
+      }
+    });
+
   }
 }

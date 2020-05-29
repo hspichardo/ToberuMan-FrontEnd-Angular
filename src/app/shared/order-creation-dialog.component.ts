@@ -15,15 +15,15 @@ import {MatSnackBar} from '@angular/material/snack-bar';
 
 export class OrderCreationDialogComponent {
 
-  order: OrderModel = {id: null, tableid: null, isReady: null, date: null, orderLines: []};
+  order: OrderModel = {_id: null, tableid: null, isReady: null, date: null, orderLines: []};
   orderLine: OrderLineDetail = {menuid: null, amount: null};
   isProviderNull: boolean;
 
   @Input() menuIn = '';
   @Output() menuOut = new EventEmitter<any>();
   menus: MenuModel[];
-
-  title = 'Orders\' Menus';
+  comesFromOverview: boolean;
+  title = 'Order\'s Menus';
   columns = ['menuid', 'amount'];
   data: OrderLineDetail[];
   tables: Table[];
@@ -31,6 +31,9 @@ export class OrderCreationDialogComponent {
   constructor(private dialog: MatDialog, private dialogRef: MatDialogRef<OrderCreationDialogComponent>, private message: MatSnackBar,
               private orderService: OrderService, private menuService: MenuService, private tableService: TableService,
               @Inject(MAT_DIALOG_DATA) public orderData: any) {
+    this.order.tableid = orderData.tableid;
+    this.comesFromOverview = orderData.isOverview;
+    console.log(this.order.tableid);
     this.menuService.readAll().subscribe(
       data => this.menus = data
     );
@@ -45,7 +48,7 @@ export class OrderCreationDialogComponent {
     }
     this.orderService.create(this.order).subscribe(
       data => {
-        this.message.open('Order created: ' + data.id, null, {
+        this.message.open('Order created: ' + data._id, null, {
           duration: 2000,
         });
         this.dialogRef.close();
@@ -53,7 +56,7 @@ export class OrderCreationDialogComponent {
   }
 
   isNotValid(): boolean {
-    return this.order.orderLines === [];
+    return this.order.orderLines === undefined || this.order.orderLines .length === 0 || this.order.tableid === null;
   }
 
   empty(field: string): boolean {

@@ -27,9 +27,10 @@ export class OrderComponent implements OnInit {
 
   create() {
     this.dialog.open(OrderCreationDialogComponent, {
-      width: '600px',
+      width: '70%',
       data: {
-        providerId: null
+        tableid: null,
+        isOverview: false
       }
     });
 

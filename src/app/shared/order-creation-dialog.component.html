@@ -1,7 +1,7 @@
 <h3 mat-dialog-title>Create Order</h3>
 <mat-dialog-content>
-  <mat-form-field>
-    <mat-label>Mesa</mat-label>
+  <mat-form-field  *ngIf="!comesFromOverview">
+    <mat-label >Mesa</mat-label>
     <mat-select [(value)]="order.tableid">
       <ng-container *ngFor="let table of tables">
         <mat-option (click)="onSelect(table)" [value]="table">
@@ -35,7 +35,7 @@
 
 <mat-dialog-actions>
   <button mat-dialog-close mat-raised-button>Close</button>
-  <button (click)="createOrder()" color="primary" mat-raised-button>
+  <button *ngIf="!isNotValid()" (click)="createOrder()" color="primary" mat-raised-button>
     <mat-icon>local_offer</mat-icon>
     <span>Create Order</span>
   </button>
