@@ -5,8 +5,9 @@ import {MatSnackBar} from '@angular/material/snack-bar';
 import {OrderService} from '../../shared/order.service';
 import {OrderModel} from '../../shared/ordemodel';
 import {OrderCreationDialogComponent} from '../../shared/order-creation-dialog.component';
-import {MenuModel} from '../../shared/menu.model';
-import {MenuCreationDialogComponent} from '../menu/menu-creation-dialog.component';
+import {CancelYesDialogComponent} from '../../shared/cancel-yes-dialog.component';
+import {take} from 'rxjs/operators';
+
 
 
 @Component({
@@ -51,8 +52,21 @@ export class OrderComponent implements OnInit {
 
   }
 
-  delete($event: any) {
-
+  delete(order: OrderModel): void {
+    this.dialog.open(CancelYesDialogComponent).afterClosed().pipe(take(1)).subscribe((shouldDelete: boolean) => {
+      if (shouldDelete) {
+        this.orderService.delete(order).subscribe(() => {
+            this.message.open('Order deleted successfully', null, {
+              duration: 2000,
+            });
+            this.orderService.readAll().subscribe(
+              data => this.data = data
+            );
+          }
+        );
+      }
+    }, (error) => console.log(error), () => {
+    });
   }
 
   read($event: any) {
