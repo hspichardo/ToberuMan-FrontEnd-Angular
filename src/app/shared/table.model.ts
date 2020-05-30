@@ -5,4 +5,7 @@ export class Table {
   isTaken: boolean;
   isReserved: boolean;
   reservationDate: Date;
+  public toString = (): string => {
+    return `Number: (${this.number})`;
+  }
 }

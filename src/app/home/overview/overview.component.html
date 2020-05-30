@@ -10,7 +10,7 @@
       </mat-card-content>
       <mat-card-actions>
         <mat-chip-list aria-label="Fish selection">
-          <button (click)="createOrder(table._id)" mat-mini-fab color="accent" aria-label="Ordenar">
+          <button (click)="createOrder(table)" mat-mini-fab color="accent" aria-label="Ordenar">
             <mat-icon>menu</mat-icon>
           </button>
           <mat-chip *ngIf="!table.isTaken" color="accent" selected>Libre</mat-chip>

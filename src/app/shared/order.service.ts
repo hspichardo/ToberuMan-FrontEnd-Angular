@@ -1,7 +1,9 @@
 import {Injectable} from '@angular/core';
 import {HttpService} from './http.service'
 import {Observable} from 'rxjs';
-import {OrderModel} from './orderDetails.model';
+import {OrderModel} from './ordemodel';
+import {MenuModel} from './menu.model';
+
 
 @Injectable()
 export class OrderService {
@@ -12,5 +14,8 @@ export class OrderService {
   }
   readAll(): Observable<OrderModel[]> {
     return this.httpService.successful().get('/order');
+  }
+  update(id: string, order: OrderModel): Observable<OrderModel> {
+    return this.httpService.put('/order' + '/' + id, order);
   }
 }
