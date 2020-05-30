@@ -3,10 +3,11 @@ import {MatDialog} from '@angular/material/dialog';
 import {MenuService} from '../../shared/menu.service';
 import {MatSnackBar} from '@angular/material/snack-bar';
 import {OrderService} from '../../shared/order.service';
-import {OrderModel} from '../../shared/ordemodel';
+import {OrderModel} from '../../shared/order.model';
 import {OrderCreationDialogComponent} from '../../shared/order-creation-dialog.component';
 import {CancelYesDialogComponent} from '../../shared/cancel-yes-dialog.component';
 import {take} from 'rxjs/operators';
+import {OrderDetailDialogComponent} from './order-detail-dialog.component';
 
 
 
@@ -18,7 +19,7 @@ import {take} from 'rxjs/operators';
 
 export class OrderComponent implements OnInit {
   title = 'Orders management';
-  columns = ['_id', 'isReady', 'date'];
+  columns = ['_id', 'isReady', 'date', 'tableNumber'];
   data: OrderModel[];
   private isEdit: boolean;
 
@@ -27,6 +28,11 @@ export class OrderComponent implements OnInit {
         data => {
           this.data = data;
           console.log(this.data);
+          let i = 0;
+          this.data.forEach( order => {
+            order.tableNumber = data[i].table.number;
+            i++;
+          });
         }
       );
   }
@@ -45,7 +51,14 @@ export class OrderComponent implements OnInit {
     }).afterClosed().subscribe(
       result => {
         this.orderService.readAll().subscribe(
-          data => this.data = data
+          data => {
+            let i = 0;
+            this.data = data;
+            this.data.forEach( order => {
+              order.tableNumber = data[i].table.number;
+              i++;
+            });
+          }
         );
       }
     );
@@ -60,7 +73,14 @@ export class OrderComponent implements OnInit {
               duration: 2000,
             });
             this.orderService.readAll().subscribe(
-              data => this.data = data
+              data => {
+                let i = 0;
+                this.data = data;
+                this.data.forEach(oderout => {
+                  oderout.tableNumber = data[i].table.number;
+                  i++;
+                });
+              }
             );
           }
         );
@@ -69,8 +89,17 @@ export class OrderComponent implements OnInit {
     });
   }
 
-  read($event: any) {
-
+  read(order: OrderModel) {
+    this.dialog.open(OrderDetailDialogComponent,
+      {
+        width: '70%',
+        data: {
+          tableid: null,
+          isEdit: this.isEdit,
+          orderIn: order
+        }
+      }
+    );
   }
 
   update(order: OrderModel){
@@ -87,7 +116,14 @@ export class OrderComponent implements OnInit {
     ).afterClosed().subscribe(
       result => {
         this.orderService.readAll().subscribe(
-          data => this.data = data
+          data => {
+            let i = 0;
+            this.data = data;
+            this.data.forEach(oderout => {
+              oderout.tableNumber = data[i].table.number;
+              i++;
+            });
+          }
         );
       }
     );

@@ -1,7 +1,7 @@
 import {Injectable} from '@angular/core';
-import {HttpService} from './http.service'
+import {HttpService} from './http.service';
 import {Observable} from 'rxjs';
-import {OrderModel} from './ordemodel';
+import {OrderModel} from './order.model';
 import {MenuModel} from './menu.model';
 
 
@@ -20,5 +20,9 @@ export class OrderService {
   }
   delete(order: OrderModel): Observable<void> {
     return this.httpService.delete('/order' + '/' + order._id);
+  }
+
+  readOne(id: string): Observable<OrderModel> {
+    return this.httpService.get('/order' + '/' + id);
   }
 }

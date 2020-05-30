@@ -1,6 +1,6 @@
 import {Component, EventEmitter, Inject, Input, Output} from '@angular/core';
 import {OrderService} from './order.service';
-import {OrderModel} from './ordemodel';
+import {OrderModel} from './order.model';
 import {OrderLineDetail} from './OrderLineDetail.model';
 import {MenuModel} from './menu.model';
 import {MenuService} from './menu.service';
@@ -15,8 +15,8 @@ import {MatSnackBar} from '@angular/material/snack-bar';
 
 export class OrderCreationDialogComponent {
 
-  order: OrderModel = {_id: null, table: null, tableid: null, isReady: null, date: null, orderLines: []};
-  orderLine: OrderLineDetail = {menuid: null, amount: null, menu: null};
+  order: OrderModel = {_id: null, table: null, tableid: null, isReady: null, date: null, tableNumber: null, orderLines: []};
+  orderLine: OrderLineDetail = {menuid: null, amount: null, menu: null, menuname: null};
   isProviderNull: boolean;
 
   @Input() menuIn = '';
@@ -24,7 +24,7 @@ export class OrderCreationDialogComponent {
   menus: MenuModel[];
   comesFromOverview: boolean;
   title = 'Order\'s Menus';
-  columns = ['menuid', 'amount'];
+  columns = ['menuid', 'amount', 'menuname'];
   data: OrderLineDetail[];
   tables: Table[];
   isEdit: boolean;
@@ -40,11 +40,13 @@ export class OrderCreationDialogComponent {
       this.order._id = orderData.orderIn._id;
       this.order.date = orderData.orderIn.date;
       this.order.isReady = orderData.orderIn.isReady;
+      this.order.tableNumber = orderData.orderIn.table.number;
       this.data = [];
       for (const orderline of this.orderData.orderIn.orderLines) {
-        const orderLine = {menuid: null, amount: null, menu: null};
+        const orderLine = {menuid: null, amount: null, menu: null, menuname: null};
         orderLine.menuid = orderline.menu._id;
         orderLine.amount = orderline.amount;
+        orderLine.menuname = orderline.menu.name;
         this.data.push(orderLine);
         this.order.orderLines.push(orderLine);
       }
@@ -107,7 +109,8 @@ export class OrderCreationDialogComponent {
   }
 
   addOrderLine() {
-    this.order.orderLines.push({menuid: this.orderLine.menuid, amount: this.orderLine.amount, menu: this.orderLine.menu});
+    this.order.orderLines.push({menuid: this.orderLine.menuid, amount: this.orderLine.amount,
+      menu: this.orderLine.menu, menuname: this.orderLine.menuname});
     this.data = [...this.order.orderLines];
   }
 

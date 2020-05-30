@@ -30,6 +30,7 @@ import {TableService} from './shared/table.service';
 import {OrderComponent} from './home/order/order.component';
 import {OrderService} from './shared/order.service';
 import {OrderCreationDialogComponent} from './shared/order-creation-dialog.component';
+import {OrderDetailDialogComponent} from './home/order/order-detail-dialog.component';
 
 
 @NgModule({
@@ -44,7 +45,8 @@ import {OrderCreationDialogComponent} from './shared/order-creation-dialog.compo
     CancelYesDialogComponent,
     OverviewComponent,
     OrderComponent,
-    OrderCreationDialogComponent
+    OrderCreationDialogComponent,
+    OrderDetailDialogComponent
   ],
   imports: [
     BrowserModule,

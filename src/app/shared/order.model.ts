@@ -8,4 +8,5 @@ export interface OrderModel {
   isReady: boolean;
   date: Date;
   orderLines: OrderLineDetail[];
+  tableNumber: number;
 }
