@@ -1,10 +1,21 @@
-<h3 mat-dialog-title>Create Order</h3>
+<h3 *ngIf="!isEdit" mat-dialog-title>Create Order</h3>
+<h3 *ngIf="isEdit" mat-dialog-title>Update Order</h3>
 <mat-dialog-content>
-  <mat-form-field  *ngIf="!comesFromOverview">
+  <mat-form-field  *ngIf="!comesFromOverview && !isEdit">
     <mat-label >Mesa</mat-label>
-    <mat-select [(value)]="order.tableid">
+    <mat-select [(value)]="order.table">
       <ng-container *ngFor="let table of tables">
-        <mat-option (click)="onSelect(table)" [value]="table">
+        <mat-option (click)="onSelectTable(table)" [value]="table">
+          {{table.number}}
+        </mat-option>
+      </ng-container>
+    </mat-select>
+  </mat-form-field>
+  <mat-form-field  *ngIf="!comesFromOverview && isEdit">
+    <mat-label >Mesa</mat-label>
+    <mat-select [(value)]="order.table._id">
+      <ng-container *ngFor="let table of tables">
+        <mat-option (click)="onSelectTable(table)" [value]="table._id">
           {{table.number}}
         </mat-option>
       </ng-container>
@@ -35,8 +46,13 @@
 
 <mat-dialog-actions>
   <button mat-dialog-close mat-raised-button>Close</button>
-  <button *ngIf="!isNotValid()" (click)="createOrder()" color="primary" mat-raised-button>
+  <button *ngIf="!isNotValid() && !isEdit" (click)="createOrder()" color="primary" mat-raised-button>
     <mat-icon>local_offer</mat-icon>
     <span>Create Order</span>
+  </button>
+
+  <button *ngIf="!isNotValid() && isEdit" (click)="updateOrder()" color="primary" mat-raised-button>
+    <mat-icon>local_offer</mat-icon>
+    <span>Update Order</span>
   </button>
 </mat-dialog-actions>

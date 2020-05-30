@@ -31,12 +31,13 @@ export class OverviewComponent implements OnInit {
     this.breakpoint = (event.target.innerWidth <= 400) ? 1 : 4;
   }
 
-  createOrder(id: string) {
+  createOrder(table: Table) {
     this.dialog.open(OrderCreationDialogComponent, {
       width: '70%',
       data: {
-        tableid: id,
-        isOverview: true
+        isOverview: true,
+        tableIn: table,
+        orderIn: null
       }
     });
 
