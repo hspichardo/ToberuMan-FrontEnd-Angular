@@ -18,4 +18,7 @@ export class OrderService {
   update(id: string, order: OrderModel): Observable<OrderModel> {
     return this.httpService.put('/order' + '/' + id, order);
   }
+  delete(order: OrderModel): Observable<void> {
+    return this.httpService.delete('/order' + '/' + order._id);
+  }
 }
