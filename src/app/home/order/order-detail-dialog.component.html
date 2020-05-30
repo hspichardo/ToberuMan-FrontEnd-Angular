@@ -1,0 +1,15 @@
+<h3 mat-dialog-title>Order Details</h3>
+<mat-dialog-content>
+  <mat-label><strong>Table Number:</strong> {{order.tableNumber}} </mat-label>
+  <br/>
+  <mat-label><strong>isReady:</strong> {{order.isReady}} </mat-label>
+  <br/>
+  <mat-label><strong>Date:</strong> {{order.date}} </mat-label>
+  <br/>
+  <app-crud [columns]="columns" [createAction]="false" [data]="data"
+            [deleteAction]="false" [readAction]="false" [title]="title" [updateAction]="false"></app-crud>
+</mat-dialog-content>
+
+<mat-dialog-actions>
+
+</mat-dialog-actions>
