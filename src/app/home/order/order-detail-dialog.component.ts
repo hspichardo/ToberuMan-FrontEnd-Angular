@@ -4,6 +4,8 @@ import {OrderLineDetail} from '../../shared/OrderLineDetail.model';
 import {MAT_DIALOG_DATA, MatDialog, MatDialogRef} from '@angular/material/dialog';
 import {OrderService} from '../../shared/order.service';
 import {MatSnackBar} from '@angular/material/snack-bar';
+import {OrderCreationDialogComponent} from '../../shared/order-creation-dialog.component';
+import {InvoiceCreationDialogComponent} from '../../shared/incoice-creation.dialog.component';
 
 @Component({
   templateUrl: 'order-detail-dialog.component.html'
@@ -37,5 +39,14 @@ export class OrderDetailDialogComponent {
         this.provider = orderData.provider;
       }
     );
+  }
+
+  createInvoice() {
+    this.dialog.open(InvoiceCreationDialogComponent, {
+      width: '70%',
+      data: {
+        orderIn: this.order
+      }
+    }).afterClosed();
   }
 }

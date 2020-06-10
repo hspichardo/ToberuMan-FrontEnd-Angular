@@ -8,7 +8,7 @@ import {OrderCreationDialogComponent} from '../../shared/order-creation-dialog.c
 import {CancelYesDialogComponent} from '../../shared/cancel-yes-dialog.component';
 import {take} from 'rxjs/operators';
 import {OrderDetailDialogComponent} from './order-detail-dialog.component';
-
+import {TokensService} from '../../shared/tokens.service';
 
 
 @Component({
@@ -21,20 +21,25 @@ export class OrderComponent implements OnInit {
   title = 'Orders management';
   columns = ['_id', 'isReady', 'date', 'tableNumber'];
   data: OrderModel[];
-  private isEdit: boolean;
+  isEdit: boolean;
+  isAdmin: boolean;
+  isWaiter: boolean;
 
-  constructor(private dialog: MatDialog, private orderService: OrderService, private message: MatSnackBar) {
-      this.orderService.readAll().subscribe(
-        data => {
-          this.data = data;
-          console.log(this.data);
-          let i = 0;
-          this.data.forEach( order => {
-            order.tableNumber = data[i].table.number;
-            i++;
-          });
-        }
-      );
+  constructor(private dialog: MatDialog, private orderService: OrderService, private message: MatSnackBar,
+              private tokenService: TokensService) {
+    this.orderService.readAll().subscribe(
+      data => {
+        this.data = data;
+        console.log(this.data);
+        let i = 0;
+        this.data.forEach(order => {
+          order.tableNumber = data[i].table.number;
+          i++;
+        });
+      }
+    );
+    this.isAdmin = this.tokenService.isAdmin();
+    this.isWaiter = this.tokenService.isOperator();
   }
 
   ngOnInit(): void {
@@ -54,7 +59,7 @@ export class OrderComponent implements OnInit {
           data => {
             let i = 0;
             this.data = data;
-            this.data.forEach( order => {
+            this.data.forEach(order => {
               order.tableNumber = data[i].table.number;
               i++;
             });
@@ -102,7 +107,7 @@ export class OrderComponent implements OnInit {
     );
   }
 
-  update(order: OrderModel){
+  update(order: OrderModel) {
     this.isEdit = true;
     this.dialog.open(OrderCreationDialogComponent,
       {
