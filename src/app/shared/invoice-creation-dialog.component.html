@@ -4,13 +4,13 @@
   <mat-form-field class="full-width">
     <input [(ngModel)]="newInvoice.emailrecipient" cdkFocusInitial matInput
            placeholder="Email cliente"
-           required type="String"/>
+           required type="email"/>
   </mat-form-field>
   <br>
 </mat-dialog-content>
 <mat-dialog-actions>
   <button mat-dialog-close mat-raised-button>Close</button>
-  <button (click)="createInvoice()" *ngIf="isvalid()" color="primary" mat-raised-button>
+  <button (click)="createInvoice()" *ngIf="isValid()" color="primary" mat-raised-button>
     <mat-icon>local_offer</mat-icon>
     <span>Create Invoice</span>
   </button>

@@ -38,7 +38,7 @@ export class InvoiceCreationDialogComponent {
       })
     );
   }
-  isvalid(): boolean {
-    return this.newInvoice.emailrecipient !== null;
+  isValid(): boolean {
+    return this.newInvoice.emailrecipient !== null && this.newInvoice.emailrecipient !== '';
   }
 }
