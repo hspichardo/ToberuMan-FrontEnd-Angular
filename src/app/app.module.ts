@@ -31,6 +31,8 @@ import {OrderComponent} from './home/order/order.component';
 import {OrderService} from './shared/order.service';
 import {OrderCreationDialogComponent} from './shared/order-creation-dialog.component';
 import {OrderDetailDialogComponent} from './home/order/order-detail-dialog.component';
+import {InvoiceService} from './shared/invoice.service';
+import {InvoiceCreationDialogComponent} from './shared/incoice-creation.dialog.component';
 
 
 @NgModule({
@@ -46,7 +48,8 @@ import {OrderDetailDialogComponent} from './home/order/order-detail-dialog.compo
     OverviewComponent,
     OrderComponent,
     OrderCreationDialogComponent,
-    OrderDetailDialogComponent
+    OrderDetailDialogComponent,
+    InvoiceCreationDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -70,7 +73,8 @@ import {OrderDetailDialogComponent} from './home/order/order-detail-dialog.compo
     MatSnackBar,
     MenuService,
     TableService,
-    OrderService
+    OrderService,
+    InvoiceService
   ],
   bootstrap: [AppComponent]
 })

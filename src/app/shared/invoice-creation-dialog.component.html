@@ -1,0 +1,17 @@
+<h3 mat-dialog-title>Insert data for the invoice</h3>
+<mat-dialog-content>
+
+  <mat-form-field class="full-width">
+    <input [(ngModel)]="newInvoice.emailrecipient" cdkFocusInitial matInput
+           placeholder="Email cliente"
+           required type="String"/>
+  </mat-form-field>
+  <br>
+</mat-dialog-content>
+<mat-dialog-actions>
+  <button mat-dialog-close mat-raised-button>Close</button>
+  <button (click)="createInvoice()" *ngIf="isvalid()" color="primary" mat-raised-button>
+    <mat-icon>local_offer</mat-icon>
+    <span>Create Invoice</span>
+  </button>
+</mat-dialog-actions>
