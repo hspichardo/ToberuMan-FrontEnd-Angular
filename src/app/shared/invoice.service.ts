@@ -11,4 +11,10 @@ export class InvoiceService {
   create(invoice: Invoice): Observable<any> {
     return this.httpService.pdf().post('/invoice', invoice);
   }
+  readAll(): Observable<Invoice[]> {
+    return this.httpService.successful().get('/invoice');
+  }
+  printInvoice(invoice: Invoice): Observable<any> {
+    return this.httpService.pdf().get('/invoice/' + invoice._id);
+  }
 }

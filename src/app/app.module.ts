@@ -33,6 +33,7 @@ import {OrderCreationDialogComponent} from './shared/order-creation-dialog.compo
 import {OrderDetailDialogComponent} from './home/order/order-detail-dialog.component';
 import {InvoiceService} from './shared/invoice.service';
 import {InvoiceCreationDialogComponent} from './shared/incoice-creation.dialog.component';
+import {InvoiceComponent} from './home/invoice/invoice.component';
 
 
 @NgModule({
@@ -49,7 +50,8 @@ import {InvoiceCreationDialogComponent} from './shared/incoice-creation.dialog.c
     OrderComponent,
     OrderCreationDialogComponent,
     OrderDetailDialogComponent,
-    InvoiceCreationDialogComponent
+    InvoiceCreationDialogComponent,
+    InvoiceComponent
   ],
   imports: [
     BrowserModule,

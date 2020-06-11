@@ -35,7 +35,7 @@
         </li>
         <li *ngIf="isAdmin || isManager || isWaiter" class="nav-item">
           <a class="nav-link" routerLink="/home/order">
-            <span class="material-icons">speaker_notes</span>
+            <span class="material-icons">note_add</span>
             Ordenes
           </a>
         </li>
@@ -43,6 +43,12 @@
           <a routerLink="/home" class="nav-link">
             <span class="material-icons">fastfood</span>
             Administrar Menú
+          </a>
+        </li>
+        <li *ngIf="isManager || isAdmin" class="nav-item" routerLink="/home/invoice">
+          <a routerLink="/home" class="nav-link">
+            <span class="material-icons">speaker_notes</span>
+            Facturas
           </a>
         </li>
         <li *ngIf="isManager || isAdmin" class="nav-item">
