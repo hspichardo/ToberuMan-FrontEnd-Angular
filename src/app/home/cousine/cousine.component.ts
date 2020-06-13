@@ -17,13 +17,12 @@ export class CousineComponent implements OnInit {
   subscription: Subscription;
   isWaiter: boolean;
   constructor(private orderService: OrderService, private tokenService: TokensService) {
-    const source = interval(2000);
+    const source = interval(5000);
     this.isWaiter = tokenService.isOperator();
     this.subscription = source.subscribe(val => {
       this.orderService.readOrderForCousine().subscribe(
         data => {
           this.orders = data;
-          console.log(this.orders);
         }
       );
     });
@@ -34,7 +33,14 @@ export class CousineComponent implements OnInit {
   onResize(event) {
     this.breakpoint = (event.target.innerWidth <= 400) ? 1 : 4;
   }
-  updateOrder() {
-
+  updateOrder(order: OrderModel) {
+    order.tableid = order.table._id;
+    console.log(order.orderLines);
+    for (const orderline of order.orderLines) {
+     orderline.menuid = orderline.menu._id;
+    }
+    this.orderService.update(order._id, order).subscribe(
+      data => console.log('Orden lista!')
+    );
   }
 }
