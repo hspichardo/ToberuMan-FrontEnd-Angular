@@ -22,11 +22,13 @@ export class HomeComponent implements OnInit {
  isManager: boolean;
  isAdmin: boolean;
  isWaiter: boolean;
+  isCousine: boolean;
   constructor(private tokensService: TokensService, router: Router) {
     this.username = tokensService.getName();
     this.isManager = tokensService.isManager();
     this.isAdmin = tokensService.isAdmin();
     this.isWaiter = tokensService.isOperator();
+    this.isCousine = tokensService.isCousine();
     console.log(this.isAdmin);
     if (tokensService.getName() === '???') { router.navigate(['welcome']); }
   }

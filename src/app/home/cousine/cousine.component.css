@@ -1,0 +1,19 @@
+.example-card {
+  max-height: 100%;
+}
+
+.example-header-image {
+  background-size: cover;
+}
+.card-image {
+  width: 90%;
+  margin: auto;
+}
+
+
+mat-grid-tile {
+  background: #ffffff;
+}
+mat-grid-list {
+  margin-top: 5%;
+}

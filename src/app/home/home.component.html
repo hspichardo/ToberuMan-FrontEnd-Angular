@@ -51,6 +51,12 @@
             Facturas
           </a>
         </li>
+        <li *ngIf="isManager || isAdmin || isWaiter || isCousine" class="nav-item">
+          <a routerLink="/home/cousine" class="nav-link">
+            <span class="material-icons">settings</span>
+            Cocina
+          </a>
+        </li>
         <li *ngIf="isManager || isAdmin" class="nav-item">
           <a routerLink="/home" class="nav-link">
             <span class="material-icons">settings</span>

@@ -25,4 +25,7 @@ export class OrderService {
   readOne(id: string): Observable<OrderModel> {
     return this.httpService.get('/order' + '/' + id);
   }
+  readOrderForCousine(): Observable<OrderModel[]> {
+    return this.httpService.get('/order/cousine/all');
+  }
 }
