@@ -21,7 +21,7 @@
       </mat-card-content>
       <mat-card-actions>
         <mat-chip-list aria-label="Fish selection">
-          <mat-slide-toggle (toggle)="updateOrder()" [disabled]="isWaiter" [(ngModel)]="order.isReady">Orden Lista</mat-slide-toggle>
+          <mat-slide-toggle (change)="updateOrder(order)"  [disabled]="isWaiter" [(ngModel)]="order.isReady">Orden Lista</mat-slide-toggle>
         </mat-chip-list>
       </mat-card-actions>
     </mat-card>
