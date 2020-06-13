@@ -6,6 +6,7 @@ import {MenuComponent} from './home/menu/menu.component';
 import {OverviewComponent} from './home/overview/overview.component';
 import {OrderComponent} from './home/order/order.component';
 import {InvoiceComponent} from './home/invoice/invoice.component';
+import {CousineComponent} from './home/cousine/cousine.component';
 
 
 const routes: Routes = [
@@ -17,7 +18,8 @@ const routes: Routes = [
       {path: 'menu', component: MenuComponent},
       {path: 'overview', component: OverviewComponent},
       {path: 'order', component: OrderComponent},
-      {path: 'invoice', component: InvoiceComponent}
+      {path: 'invoice', component: InvoiceComponent},
+      {path: 'cousine', component: CousineComponent}
     ]
   }
 ];
