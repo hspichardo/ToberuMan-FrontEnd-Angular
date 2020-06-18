@@ -1,0 +1,2 @@
+<app-crud (create)="create()" (delete)="delete($event)" (read)="read($event)"
+          (update)="update($event)" [columns]="columns" [updateAction]="isAdmin || isWaiter" [deleteAction]="isAdmin" [data]="tables" [title]="title"></app-crud>
