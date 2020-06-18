@@ -36,6 +36,7 @@ import {InvoiceCreationDialogComponent} from './shared/incoice-creation.dialog.c
 import {InvoiceComponent} from './home/invoice/invoice.component';
 import {CousineComponent} from './home/cousine/cousine.component';
 import {TableComponent} from './home/table/table.component';
+import {TableCreationDialogComponent} from './home/table/table-creation-dialog.component';
 
 
 @NgModule({
@@ -55,7 +56,8 @@ import {TableComponent} from './home/table/table.component';
     InvoiceCreationDialogComponent,
     InvoiceComponent,
     CousineComponent,
-    TableComponent
+    TableComponent,
+    TableCreationDialogComponent
   ],
   imports: [
     BrowserModule,
