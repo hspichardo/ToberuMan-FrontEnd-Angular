@@ -1,0 +1,29 @@
+<h3 mat-dialog-title>Menu</h3>
+<mat-dialog-content>
+
+  <mat-form-field class="full-width">
+    <input [(ngModel)]="newTable.number" cdkFocusInitial matInput
+           placeholder="Número de Mesa"
+           required type="number"/>
+  </mat-form-field>
+  <br>
+  <mat-form-field class="full-width">
+    <input [(ngModel)]="newTable.capacity" cdkFocusInitial matInput
+           placeholder="Capacidad"
+           required type="number"/>
+  </mat-form-field>
+  <br>
+  <mat-slide-toggle *ngIf="editMode" [(ngModel)]="newTable.isTaken">Disponible</mat-slide-toggle>
+
+</mat-dialog-content>
+<mat-dialog-actions>
+  <button mat-dialog-close mat-raised-button>Close</button>
+  <button (click)="createTable()" *ngIf="editMode == false && isvalid()" color="primary" mat-raised-button>
+    <mat-icon>local_offer</mat-icon>
+    <span>Create Table</span>
+  </button>
+  <button (click)="updateTable()" *ngIf="editMode && isvalid()" color="primary" mat-raised-button>
+    <mat-icon>local_offer</mat-icon>
+    <span>Save Changes</span>
+  </button>
+</mat-dialog-actions>

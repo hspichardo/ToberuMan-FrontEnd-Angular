@@ -5,6 +5,7 @@ import {Router} from '@angular/router';
 import {MatDialog} from '@angular/material/dialog';
 import {MatSnackBar} from '@angular/material/snack-bar';
 import {TokensService} from '../../shared/tokens.service';
+import {TableCreationDialogComponent} from './table-creation-dialog.component';
 
 @Component({
   selector: 'app-table',
@@ -17,6 +18,7 @@ export class TableComponent implements OnInit {
   isWaiter: boolean;
   title = 'Tables management';
   columns = ['number', 'capacity', 'isTaken'];
+  private isEdit: boolean;
 
   ngOnInit(): void {
   }
@@ -33,7 +35,21 @@ export class TableComponent implements OnInit {
   }
 
   create() {
-
+    this.isEdit = false;
+    this.dialog.open(TableCreationDialogComponent,
+      {
+        width: '500px',
+        data: {
+          isEdit: this.isEdit
+        }
+      }
+    ).afterClosed().subscribe(
+      result => {
+        this.tableService.readAll().subscribe(
+          data => this.tables = data
+        );
+      }
+    );
   }
 
   delete($event: any) {
