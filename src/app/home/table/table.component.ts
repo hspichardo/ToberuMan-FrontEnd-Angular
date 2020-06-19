@@ -6,6 +6,7 @@ import {MatDialog} from '@angular/material/dialog';
 import {MatSnackBar} from '@angular/material/snack-bar';
 import {TokensService} from '../../shared/tokens.service';
 import {TableCreationDialogComponent} from './table-creation-dialog.component';
+import {TableDetailDialogComponent} from './table-detail-dialog.component';
 
 @Component({
   selector: 'app-table',
@@ -55,8 +56,15 @@ export class TableComponent implements OnInit {
   delete($event: any) {
       }
 
-  read($event: any) {
-
+  read(table: Table) {
+    this.dialog.open(TableDetailDialogComponent,
+      {
+        width: '400px',
+        data: {
+          id: table._id
+        }
+      }
+    );
   }
 
   update($event: any) {
