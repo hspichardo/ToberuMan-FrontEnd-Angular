@@ -1,0 +1,21 @@
+<h3 mat-dialog-title>Table's Detail</h3>
+<mat-dialog-content>
+
+  <mat-label><strong>Id:</strong> {{table._id}} </mat-label>
+
+  <br>
+  <mat-label><strong>Number:</strong> {{table.number}} </mat-label>
+
+  <br>
+  <mat-label><strong>capacity:</strong> {{table.capacity}} </mat-label>
+
+  <br>
+  <mat-label><strong>Reservation Date:</strong> {{table.reservationDate | date:'medium'}} </mat-label>
+  <br>
+  <mat-chip *ngIf="!table.isTaken" [color]="color" selected>
+    Not Aviable!
+  </mat-chip>
+</mat-dialog-content>
+<mat-dialog-actions>
+  <button mat-dialog-close mat-raised-button>Close</button>
+</mat-dialog-actions>
