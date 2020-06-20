@@ -42,4 +42,11 @@ export class OverviewComponent implements OnInit {
     });
 
   }
+  updateTableTakenState(table: Table) {
+    table.isTaken = !table.isTaken;
+    table.reservationDate = new Date();
+    this.tableService.update(table._id, table).subscribe(
+      next => {}
+    );
+  }
 }

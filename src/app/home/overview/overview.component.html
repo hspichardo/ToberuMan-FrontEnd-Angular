@@ -13,8 +13,8 @@
           <button (click)="createOrder(table)" mat-mini-fab color="accent" aria-label="Ordenar">
             <mat-icon>menu</mat-icon>
           </button>
-          <mat-chip *ngIf="!table.isTaken" color="accent" selected>Libre</mat-chip>
-          <mat-chip *ngIf="table.isTaken" color="warn" selected>Ocupado</mat-chip>
+          <mat-chip (click)="updateTableTakenState(table)" *ngIf="!table.isTaken" color="accent" selected>Libre</mat-chip>
+          <mat-chip (click)="updateTableTakenState(table)" *ngIf="table.isTaken" color="warn" selected>Ocupado</mat-chip>
         </mat-chip-list>
       </mat-card-actions>
     </mat-card>

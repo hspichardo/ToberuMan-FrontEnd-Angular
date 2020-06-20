@@ -67,7 +67,22 @@ export class TableComponent implements OnInit {
     );
   }
 
-  update($event: any) {
-
+  update(table: Table) {
+    this.isEdit = true;
+    this.dialog.open(TableCreationDialogComponent,
+      {
+        width: '500px',
+        data: {
+          id: table._id,
+          isEdit: this.isEdit
+        }
+      }
+    ).afterClosed().subscribe(
+      result => {
+        this.tableService.readAll().subscribe(
+          data => this.tables = data
+        );
+      }
+    );
   }
 }
