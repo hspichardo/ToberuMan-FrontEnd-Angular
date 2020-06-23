@@ -2,13 +2,13 @@
   <mat-grid-tile *ngFor="let order of orders">
     <mat-card class="example-card">
       <mat-card-header>
-        <mat-card-title>Orden mesa: {{order.table.number}}</mat-card-title>
-        <mat-card-subtitle>Detalles: </mat-card-subtitle>
+        <mat-card-title>Order for table number: {{order.table.number}}</mat-card-title>
+        <mat-card-subtitle>Details: </mat-card-subtitle>
       </mat-card-header>
       <mat-card-content>
         <table mat-table [dataSource]="order.orderLines" class="mat-elevation-z8">
           <ng-container matColumnDef="name">
-            <th mat-header-cell *matHeaderCellDef> Name </th>
+            <th mat-header-cell *matHeaderCellDef> Menu Name </th>
             <td mat-cell style="text-align:center; font-size: 10px;" *matCellDef="let element"> {{element.menu.name}} </td>
           </ng-container>
           <ng-container matColumnDef="amount">

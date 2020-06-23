@@ -4,5 +4,6 @@ export interface OrderLineDetail {
   menuid: string;
   menuname: string;
   amount: number;
+  price: number;
   menu: MenuModel;
 }

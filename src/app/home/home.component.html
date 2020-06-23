@@ -36,31 +36,31 @@
         <li *ngIf="isAdmin || isManager || isWaiter" class="nav-item">
           <a class="nav-link" routerLink="/home/order">
             <span class="material-icons">note_add</span>
-            Ordenes
+            Orders
           </a>
         </li>
         <li *ngIf="isManager || isAdmin" class="nav-item" routerLink="/home/menu">
           <a routerLink="/home" class="nav-link">
             <span class="material-icons">fastfood</span>
-            Administrar Menú
+            Menu Management
           </a>
         </li>
         <li *ngIf="isManager || isAdmin" class="nav-item" routerLink="/home/invoice">
           <a routerLink="/home" class="nav-link">
             <span class="material-icons">speaker_notes</span>
-            Facturas
+            Invoices
           </a>
         </li>
         <li *ngIf="isManager || isAdmin || isWaiter || isCousine" class="nav-item">
           <a routerLink="/home/cousine" class="nav-link">
             <span class="material-icons">dashboard</span>
-            Cocina
+            Kitchen
           </a>
         </li>
         <li *ngIf="isManager || isAdmin" class="nav-item">
           <a routerLink="/home/table" class="nav-link">
             <span class="material-icons">settings</span>
-            Administrar Mesas
+            Table's Management
           </a>
         </li>
       </ul>

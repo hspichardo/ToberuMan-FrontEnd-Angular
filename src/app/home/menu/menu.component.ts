@@ -15,7 +15,7 @@ import {MatSnackBar} from '@angular/material/snack-bar';
 })
 export class MenuComponent implements OnInit {
   menu: MenuModel;
-  title = 'Administración de Menús';
+  title = 'Menu Management';
   columns = ['name', 'description', 'price', 'menuType'];
   data: MenuModel[];
   isEdit: boolean;

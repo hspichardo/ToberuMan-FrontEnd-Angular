@@ -9,7 +9,12 @@
   <app-crud [columns]="columns" [createAction]="false" [data]="data"
             [deleteAction]="false" [readAction]="false" [title]="title" [updateAction]="false"></app-crud>
 
-
+  <mat-label><strong>Subtotal:</strong> {{subtotal }} </mat-label>
+  <br/>
+  <mat-label><strong>Tax 12%:</strong> {{tax}} </mat-label>
+  <br/>
+  <mat-label><strong>Total:</strong> {{total}} </mat-label>
+  <br/>
 </mat-dialog-content>
 
 <mat-dialog-actions>

@@ -2,8 +2,8 @@
   <mat-grid-tile *ngFor="let table of tables">
     <mat-card class="example-card">
       <mat-card-header>
-        <mat-card-title>Mesa {{table.number}}</mat-card-title>
-        <mat-card-subtitle>Capacidad {{table.capacity}} personas</mat-card-subtitle>
+        <mat-card-title>Table Number: {{table.number}}</mat-card-title>
+        <mat-card-subtitle>Capacity {{table.capacity}} people</mat-card-subtitle>
       </mat-card-header>
       <mat-card-content>
         <img mat-card-image class= "card-image" src="../../../assets/img/mesa.png" alt="mesa">
@@ -13,8 +13,8 @@
           <button (click)="createOrder(table)" mat-mini-fab color="accent" aria-label="Ordenar">
             <mat-icon>menu</mat-icon>
           </button>
-          <mat-chip (click)="updateTableTakenState(table)" *ngIf="!table.isTaken" color="accent" selected>Libre</mat-chip>
-          <mat-chip (click)="updateTableTakenState(table)" *ngIf="table.isTaken" color="warn" selected>Ocupado</mat-chip>
+          <mat-chip (click)="updateTableTakenState(table)" *ngIf="!table.isTaken" color="accent" selected>Free</mat-chip>
+          <mat-chip (click)="updateTableTakenState(table)" *ngIf="table.isTaken" color="warn" selected>Not Aviable</mat-chip>
         </mat-chip-list>
       </mat-card-actions>
     </mat-card>

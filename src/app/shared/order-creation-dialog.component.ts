@@ -16,7 +16,7 @@ import {MatSnackBar} from '@angular/material/snack-bar';
 export class OrderCreationDialogComponent {
 
   order: OrderModel = {_id: null, table: null, tableid: null, isReady: null, date: null, tableNumber: null, orderLines: []};
-  orderLine: OrderLineDetail = {menuid: null, amount: null, menu: null, menuname: null};
+  orderLine: OrderLineDetail = {menuid: null, amount: null, menu: null, menuname: null, price: null};
   isProviderNull: boolean;
 
   @Input() menuIn = '';
@@ -24,7 +24,7 @@ export class OrderCreationDialogComponent {
   menus: MenuModel[];
   comesFromOverview: boolean;
   title = 'Order\'s Menus';
-  columns = ['menuid', 'amount', 'menuname'];
+  columns = ['menuname', 'amount'];
   data: OrderLineDetail[];
   tables: Table[];
   isEdit: boolean;
@@ -43,10 +43,11 @@ export class OrderCreationDialogComponent {
       this.order.tableNumber = orderData.orderIn.table.number;
       this.data = [];
       for (const orderline of this.orderData.orderIn.orderLines) {
-        const orderLine = {menuid: null, amount: null, menu: null, menuname: null};
+        const orderLine = {menuid: null, amount: null, menu: null, menuname: null, price: null};
         orderLine.menuid = orderline.menu._id;
         orderLine.amount = orderline.amount;
         orderLine.menuname = orderline.menu.name;
+        orderLine.price = orderline.menu.price;
         this.data.push(orderLine);
         this.order.orderLines.push(orderLine);
       }
@@ -106,11 +107,12 @@ export class OrderCreationDialogComponent {
 
   onSelect(menu: MenuModel) {
     this.orderLine.menuid = menu._id;
+    this.orderLine.menu = menu;
   }
 
   addOrderLine() {
     this.order.orderLines.push({menuid: this.orderLine.menuid, amount: this.orderLine.amount,
-      menu: this.orderLine.menu, menuname: this.orderLine.menuname});
+      menu: this.orderLine.menu, menuname: this.orderLine.menu.name, price: this.orderLine.price});
     this.data = [...this.order.orderLines];
   }
 
