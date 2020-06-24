@@ -7,6 +7,8 @@ import {MatSnackBar} from '@angular/material/snack-bar';
 import {TokensService} from '../../shared/tokens.service';
 import {TableCreationDialogComponent} from './table-creation-dialog.component';
 import {TableDetailDialogComponent} from './table-detail-dialog.component';
+import {CancelYesDialogComponent} from '../../shared/cancel-yes-dialog.component';
+import {take} from 'rxjs/operators';
 
 @Component({
   selector: 'app-table',
@@ -53,7 +55,21 @@ export class TableComponent implements OnInit {
     );
   }
 
-  delete($event: any) {
+  delete(table: Table) {
+    this.dialog.open(CancelYesDialogComponent).afterClosed().pipe(take(1)).subscribe((shouldDelete: boolean) => {
+      if (shouldDelete) {
+        this.tableService.delete(table).subscribe(() => {
+            this.message.open('Menu updated successfully', null, {
+              duration: 2000,
+            });
+            this.tableService.readAll().subscribe(
+              data => this.tables = data
+            );
+          }
+        );
+      }
+    }, (error) => console.log(error), () => {
+    });
       }
 
   read(table: Table) {

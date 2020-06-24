@@ -3,17 +3,17 @@
 
   <mat-form-field class="full-width">
     <input [(ngModel)]="newTable.number" cdkFocusInitial matInput
-           placeholder="Número de Mesa"
+           placeholder="Number:"
            required type="number"/>
   </mat-form-field>
   <br>
   <mat-form-field class="full-width">
     <input [(ngModel)]="newTable.capacity" cdkFocusInitial matInput
-           placeholder="Capacidad"
+           placeholder="Capacity"
            required type="number"/>
   </mat-form-field>
   <br>
-  <mat-slide-toggle *ngIf="editMode" [(ngModel)]="newTable.isTaken">Disponible</mat-slide-toggle>
+  <mat-slide-toggle *ngIf="editMode" [(ngModel)]="newTable.isTaken">Aviable</mat-slide-toggle>
 
 </mat-dialog-content>
 <mat-dialog-actions>

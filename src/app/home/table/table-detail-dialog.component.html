@@ -12,7 +12,7 @@
   <br>
   <mat-label><strong>Reservation Date:</strong> {{table.reservationDate | date:'medium'}} </mat-label>
   <br>
-  <mat-chip *ngIf="!table.isTaken" [color]="color" selected>
+  <mat-chip *ngIf="table.isTaken" [color]="color" selected>
     Not Aviable!
   </mat-chip>
 </mat-dialog-content>
